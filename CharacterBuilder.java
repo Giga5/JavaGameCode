@@ -12,7 +12,7 @@
     public static int level;
     public static char key;
     public static String description;
-    public static List<Item> items;
+    public static List<Item> inventory = new ArrayList<Item>();
     
     public static void build() {
       String selection = TitleScreen.runTitle();
@@ -39,7 +39,7 @@
       maxenergy = 20;
       energy = maxenergy;
       description = "A hardened space criminal that always has their trusty blaster.";
-      items.add(Items.BLASTER);
+      inventory.add(Items.BLASTER);
     }
     
     public static void buildMechanic() {
@@ -51,7 +51,7 @@
      maxenergy = 10;
      energy = maxenergy;
      description = "Worked at an intergalactic ship yard for the majority of their life.";
-     items.add(Items.WRENCH);
+     inventory.add(Items.WRENCH);
     }
 
     public static void buildMarine() {
@@ -63,7 +63,7 @@
      maxenergy = 10;
      energy = maxenergy;
      description = "A rugged individual that served in the Elite Space Force, E.S.P. , and had recently left for a simpler life.";
-     items.add(Items.SIDEARM);
+     inventory.add(Items.SIDEARM);
     }
   }
 }

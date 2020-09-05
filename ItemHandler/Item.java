@@ -13,8 +13,8 @@ public class Item {
   }
 
   public void displayDetails() {
+      System.out.println("Name: " + this.key);
     System.out.println("Description: " + this.details);
-    System.out.println();
     System.out.println("Consumable: " + this.isConsumable);
   }
 }
