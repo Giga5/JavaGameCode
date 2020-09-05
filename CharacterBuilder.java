@@ -1,5 +1,6 @@
   import java.util.*;
   import java.lang.*;
+  import ItemHandler.*;
   
   public class CharacterBuilder {
 
@@ -38,6 +39,7 @@
       maxenergy = 20;
       energy = maxenergy;
       description = "A hardened space criminal that always has their trusty blaster.";
+      items.add(Items.BLASTER);
     }
     
     public static void buildMechanic() {
@@ -49,6 +51,7 @@
      maxenergy = 10;
      energy = maxenergy;
      description = "Worked at an intergalactic ship yard for the majority of their life.";
+     items.add(Items.WRENCH);
     }
 
     public static void buildMarine() {
@@ -60,6 +63,7 @@
      maxenergy = 10;
      energy = maxenergy;
      description = "A rugged individual that served in the Elite Space Force, E.S.P. , and had recently left for a simpler life.";
+     items.add(Items.SIDEARM);
     }
   }
 }

@@ -1,10 +1,12 @@
+package ItemHandler;
+
 public class Item {
 
   String key;
   String details;
   boolean isConsumable;
 
-  public Item(String inKey, String inDetails, boolean inConsumable) {
+  public Item(String inKey, String inDetails, boolean inConsumable, boolean doesDamage, DamageType damageType) {
       key = inKey;
       details = inDetails;
       isConsumable = inConsumable;
@@ -13,6 +15,6 @@ public class Item {
   public void displayDetails() {
     System.out.println("Description: " + this.details);
     System.out.println();
-    System.out.println("Consumable: " + this.isConsumable)
+    System.out.println("Consumable: " + this.isConsumable);
   }
 }

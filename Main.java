@@ -9,6 +9,6 @@ class Main {
     CharacterBuilder character = new CharacterBuilder();
     character.build();
 
-    System.out.println(character.hp);
+    System.out.println(character.items);
   }
 }
