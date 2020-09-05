@@ -38,7 +38,6 @@
       maxenergy = 20;
       energy = maxenergy;
       description = "A hardened space criminal that always has their trusty blaster.";
-      items.
     }
     
     public static void buildMechanic() {
