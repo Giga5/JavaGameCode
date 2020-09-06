@@ -12,17 +12,23 @@
     public static int level;
     public static char key;
     public static String description;
+    public static String name;
     public static List<Item> inventory = new ArrayList<Item>();
     
     public static void build() {
+        String option;
+        do {
+            option = TitleScreen.getName();
+        } while(option.equals(""));
+
       String selection = TitleScreen.runTitle();
       if (selection.toLowerCase().equals("mechanic")) {
-        buildingHandler.buildMechanic();
+        buildingHandler.buildMechanic(option);
       } else if(selection.toLowerCase().equals("marine")) {
-        buildingHandler.buildMarine();
+        buildingHandler.buildMarine(option);
         }
       else if(selection.toLowerCase().equals("spacepirate")) {
-        buildingHandler.buildSpacepirate();
+        buildingHandler.buildSpacepirate(option);
         }
       else {
         build();
@@ -30,7 +36,8 @@
   }
   
   protected static class buildingHandler {
-    public static void buildSpacepirate() {
+    public static void buildSpacepirate(String option) {
+      name = option;
       maxhp = 25;
       hp = maxhp;
       xp = 0;
@@ -42,7 +49,8 @@
       inventory.add(Items.BLASTER);
     }
     
-    public static void buildMechanic() {
+    public static void buildMechanic(String option) {
+     name = option;
      maxhp = 20;
      hp = maxhp;
      xp = 0;
@@ -54,7 +62,8 @@
      inventory.add(Items.WRENCH);
     }
 
-    public static void buildMarine() {
+    public static void buildMarine(String option) {
+     name = option;
      maxhp = 35;
      hp = maxhp;
      xp = 0;

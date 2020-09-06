@@ -10,5 +10,6 @@ class Main {
     character.build();
 
     character.inventory.get(0).displayDetails();
+    System.out.println("Character Name: " + character.name);
   }
 }
