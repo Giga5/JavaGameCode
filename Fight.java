@@ -3,6 +3,7 @@ import java.util.*;
 public class Fight {
   Random random = new Random();
   Scanner scan = new Scanner(System.in);
+  public boolean isFightOver = false;
   Enemy enemy = new Enemy();
 
 
@@ -31,7 +32,7 @@ public class Fight {
     }
 
     if(enemy.damage >= 6) {
-      description += "\tPacking Large Weaponary\n";
+      description += "\tPacking Large Weaponry\n";
     }
 
     System.out.println(description + "\n\n");
@@ -85,18 +86,17 @@ public void playerTakeTurn(Character character) {
   public static void use(Character character, Enemy enemy) {
     Scanner scanner = new Scanner(System.in);
     System.out.println("Select an item number to use");
-    System.out.println("\nYour Items are: \n");character.inventory.forEach((indx) -> {System.out.println(indx.key);});
+    System.out.println("\nYour Items are: ");
+    character.inventory.forEach(item -> {System.out.println(item.key);});
     /*
     String select = scanner.nextLine();
-    if (character.inventory.contains()) {
-      Item
-        if()
+
     } else {
       use(character, enemy)
     }
-    */
+*/
   }
-  
+
   public class Enemy {
     public int damage = random.nextInt(5)+2;
     public int maxhp = random.nextInt(10)+2;

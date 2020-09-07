@@ -12,8 +12,6 @@ class Main {
     Character character = new Character();
     character.build();
 
-    character.inventory.get(0).displayDetails();
-    System.out.println("Character Name: " + character.name);
     Fight fight = new Fight();
     fight.setup();
     while (true) {

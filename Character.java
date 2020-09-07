@@ -1,7 +1,10 @@
   import java.util.*;
   import java.lang.*;
   import ItemHandler.*;
-  
+  import ItemHandler.Items.Blaster;
+  import ItemHandler.Items.Sidearm;
+  import ItemHandler.Items.Wrench;
+
   public class Character {
 
     public static int hp;
@@ -46,7 +49,7 @@
       maxenergy = 20;
       energy = maxenergy;
       description = "A hardened space criminal that always has their trusty blaster.";
-      inventory.add(Items.BLASTER);
+      inventory.add(new Blaster());
     }
     
     public static void buildMechanic(String option) {
@@ -59,7 +62,7 @@
      maxenergy = 10;
      energy = maxenergy;
      description = "Worked at an intergalactic ship yard for the majority of their life.";
-     inventory.add(Items.WRENCH);
+     inventory.add(new Wrench());
     }
 
     public static void buildMarine(String option) {
@@ -72,7 +75,7 @@
      maxenergy = 10;
      energy = maxenergy;
      description = "A rugged individual that served in the Elite Space Force, E.S.P. , and had recently left for a simpler life.";
-     inventory.add(Items.SIDEARM);
+     inventory.add(new Sidearm());
     }
   }
 }
