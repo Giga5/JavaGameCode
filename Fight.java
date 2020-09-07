@@ -1,3 +1,5 @@
+import ItemHandler.Items.Wrench;
+
 import java.util.*;
 
 public class Fight {
@@ -81,7 +83,7 @@ public void playerTakeTurn(Character character) {
   //helper method for act
   public static char promptAct() {
     Scanner scanner = new Scanner(System.in);
-    System.out.println("What would you like to do?\nType A for \tAction\nType D for \tDisengage");
+    System.out.println("What would you like to do?\nType A for\tAction\nType D for\tDisengage");
     char input = scanner.next().charAt(0);
     return input;
     }
@@ -95,13 +97,16 @@ public void playerTakeTurn(Character character) {
       System.out.print(character.inventory.get(index).key);
       System.out.print("\n");
     }
-    /*
-    String select = scanner.nextLine();
-
+    int select = scanner.nextInt();
+    if(select < character.inventory.size() && select > -1) {
+       int set = character.inventory.get(select).useItem();
+       System.out.println("The " + enemy.classType + " has been hit for " + set + " damage!");
+       enemy.hp = enemy.hp-set;
     } else {
-      use(character, enemy)
+      System.out.println("Not valid item!");
+      use(character, enemy);
     }
-*/
+
   }
 
   public class Enemy {

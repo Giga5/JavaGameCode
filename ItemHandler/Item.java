@@ -26,4 +26,12 @@ public class Item {
   public String getKey() {
       return this.key;
   }
+
+  public int useItem() {
+      if(this.type != null) {
+          return 2;
+      } else {
+          return -1;
+      }
+  }
 }
