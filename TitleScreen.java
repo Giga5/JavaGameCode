@@ -42,7 +42,7 @@ public class TitleScreen {
 
   // Asks the user for their character name
   public static String getName() {
-    System.out.println("\nWhat would you like the name of your character to be?");
+    System.out.println("What would you like the name of your character to be?");
     Scanner scan = new Scanner(System.in);
     String choice = scan.nextLine();
 

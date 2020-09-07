@@ -12,9 +12,9 @@ public class Fight {
 //sets up fight with new enemy object
   public void setup() {
     Main.clearScreen();
-    System.out.println("\nA " + enemy.classType + " Approaches You!\n");
+    System.out.println("A " + enemy.classType + " Approaches You!\n");
     String description = "The " + enemy.classType + " seems: \n";
-    if(enemy.maxhp >= 5 && enemy.maxhp <= 9) {
+    if(enemy.maxhp >= 4 && enemy.maxhp <= 9) {
      description += "\tBuff\n";
     }
     
@@ -27,11 +27,11 @@ public class Fight {
     }
     
     if(enemy.damage <= 5 && enemy.damage >= 3) {
-     description += "\tCarrying What Seems Like A Few Weapons\n";
+     description += "\tCarrying A Few Weapons\n";
     }
     
     if(enemy.damage <= 2) {
-      description += "\tDoesn't Appear To Be Very Armed\n";
+      description += "\tCarrying Little To No Weapons\n";
     }
 
     if(enemy.damage >= 6) {
@@ -90,6 +90,7 @@ public void playerTakeTurn(Character character) {
   
   public static void use(Character character, Enemy enemy) {
     Scanner scanner = new Scanner(System.in);
+    Main.clearScreen();
     System.out.println("Select an item number to use");
     System.out.println("\nYour Items are: ");
     for(int index = 0; index < character.inventory.size(); index++) {
@@ -99,9 +100,11 @@ public void playerTakeTurn(Character character) {
     }
     int select = scanner.nextInt();
     if(select < character.inventory.size() && select > -1) {
-       int set = character.inventory.get(select).useItem();
+       String set = character.inventory.get(select).useItem();
+       if(set.charAt(0).equals('D')) {
        System.out.println("The " + enemy.classType + " has been hit for " + set + " damage!");
-       enemy.hp = enemy.hp-set;
+       enemy.hp = enemy.hp-2;
+       }
     } else {
       System.out.println("Not valid item!");
       use(character, enemy);

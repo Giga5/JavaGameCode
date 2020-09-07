@@ -27,11 +27,11 @@ public class Item {
       return this.key;
   }
 
-  public int useItem() {
+  public String useItem() {
       if(this.type != null) {
-          return 2;
+          return "D2";
       } else {
-          return -1;
+          return "H2";
       }
   }
 }

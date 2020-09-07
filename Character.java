@@ -17,25 +17,30 @@
     public static List<Item> inventory = new ArrayList<Item>();
     
     public static void build() throws InterruptedException  {
-        String option;
-        do {
+      String option;
+      String selection;
+      do {
             Main.clearScreen();
             option = TitleScreen.getName();
         } while(option.equals(""));
-
+      do {
       option = option.substring(0, 1).toUpperCase() + option.substring(1);
-      String selection = TitleScreen.runTitle();
+      selection = TitleScreen.runTitle();
       if (selection.toLowerCase().equals("mechanic")) {
         buildingHandler.buildMechanic(option);
+        break;
       } else if(selection.toLowerCase().equals("marine")) {
         buildingHandler.buildMarine(option);
+        break;
         }
       else if(selection.toLowerCase().equals("spacepirate")) {
         buildingHandler.buildSpacepirate(option);
+        break;
+        } else {
+          System.out.println("Not a valid class!");
+          Thread.sleep(2000);
         }
-      else {
-        build();
-        }
+      } while(true);
       Main.clearScreen();
       System.out.println("Welcome, " + selection.substring(0, 1).toUpperCase() + selection.substring(1) + " " + option);
       Thread.sleep(4000);
