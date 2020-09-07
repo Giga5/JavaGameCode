@@ -101,9 +101,13 @@ public void playerTakeTurn(Character character) {
     int select = scanner.nextInt();
     if(select < character.inventory.size() && select > -1) {
        String set = character.inventory.get(select).useItem();
-       if(set.charAt(0).equals('D')) {
-       System.out.println("The " + enemy.classType + " has been hit for " + set + " damage!");
-       enemy.hp = enemy.hp-2;
+       if(set.charAt(0) == 'D') {
+         if (set.charAt(1) == '0') {
+           System.out.println("Your " + character.inventory.get(select).key + " attack missed!");
+         } else {
+           System.out.println("The " + enemy.classType + " has been hit for " + set.charAt(1) + " damage!");
+           enemy.hp = enemy.hp - set.charAt(1);
+         }
        }
     } else {
       System.out.println("Not valid item!");

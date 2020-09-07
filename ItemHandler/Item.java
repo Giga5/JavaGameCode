@@ -1,5 +1,7 @@
 package ItemHandler;
 
+import java.util.Random;
+
 public class Item {
 
   public String key;
@@ -28,8 +30,9 @@ public class Item {
   }
 
   public String useItem() {
+      Random r = new Random();
       if(this.type != null) {
-          return "D2";
+          return "D" + r.nextInt(3);
       } else {
           return "H2";
       }
