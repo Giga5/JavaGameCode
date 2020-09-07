@@ -2,7 +2,7 @@
   import java.lang.*;
   import ItemHandler.*;
   
-  public class CharacterBuilder {
+  public class Character {
 
     public static int hp;
     public static int maxhp;
