@@ -1,9 +1,7 @@
   import java.util.*;
   import java.lang.*;
   import ItemHandler.*;
-  import ItemHandler.Items.Blaster;
-  import ItemHandler.Items.Sidearm;
-  import ItemHandler.Items.Wrench;
+  import ItemHandler.Items.*;
 
   public class Character {
 
@@ -18,12 +16,14 @@
     public static String name;
     public static List<Item> inventory = new ArrayList<Item>();
     
-    public static void build() {
+    public static void build() throws InterruptedException  {
         String option;
         do {
+            Main.clearScreen();
             option = TitleScreen.getName();
         } while(option.equals(""));
 
+      option = option.substring(0, 1).toUpperCase() + option.substring(1);
       String selection = TitleScreen.runTitle();
       if (selection.toLowerCase().equals("mechanic")) {
         buildingHandler.buildMechanic(option);
@@ -35,7 +35,11 @@
         }
       else {
         build();
-      }
+        }
+      Main.clearScreen();
+      System.out.println("Welcome, " + selection.substring(0, 1).toUpperCase() + selection.substring(1) + " " + option);
+      Thread.sleep(4000);
+      
   }
   
   protected static class buildingHandler {

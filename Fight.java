@@ -9,6 +9,7 @@ public class Fight {
 
 //sets up fight with new enemy object
   public void setup() {
+    Main.clearScreen();
     System.out.println("\nA " + enemy.classType + " Approaches You!\n");
     String description = "The " + enemy.classType + " seems: \n";
     if(enemy.maxhp >= 5 && enemy.maxhp <= 9) {
@@ -34,7 +35,6 @@ public class Fight {
     if(enemy.damage >= 6) {
       description += "\tPacking Large Weaponry\n";
     }
-
     System.out.println(description + "\n\n");
   }
 
@@ -43,12 +43,15 @@ public void playerTakeTurn(Character character) {
   System.out.println("Enter \'act\' to act, enter \'check\' to check your status");
   String enter = scan.nextLine();
   if (enter.equals("act")) {
+    Main.clearScreen();
     act(character);
   } else if (enter.equals("check")) {
+    Main.clearScreen();
     check(character);
     System.out.println();
     playerTakeTurn(character);
   } else {
+    Main.clearScreen();
     System.out.println("Please enter a valid option");
     playerTakeTurn(character);
   }
@@ -63,12 +66,12 @@ public void playerTakeTurn(Character character) {
   //one of the choices for a turn, allows attacking
   public void act(Character character) {
       char choice = promptAct();
-      if (choice == 'A') {
+      if (choice == 'A' || choice == 'a') {
         use(character, enemy);
-      } else if (choice == 'D') {
+      } else if (choice == 'D' || choice == 'd') {
         System.out.println("disengage");
       } else {
-        System.out.println("Not a valid choice!");
+        System.out.println("\nNot a valid choice!\n\n");
         act(character);
       }
   }
