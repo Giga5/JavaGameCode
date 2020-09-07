@@ -33,9 +33,6 @@ public class Fight {
     if(enemy.damage >= 6) {
       description += "\tPacking Large Weaponary\n";
     }
-    //Remove line below later - for testing 
-    System.out.println(enemy.maxhp);
-    System.out.println(enemy.damage);
 
     System.out.println(description + "\n\n");
   }
@@ -44,9 +41,9 @@ public class Fight {
 public void playerTakeTurn(Character character) {
   System.out.println("Enter \'act\' to act, enter \'check\' to check your status");
   String enter = scan.nextLine();
-  if (enter == "act") {
+  if (enter.equals("act")) {
     act(character);
-  } else if (enter == "check") {
+  } else if (enter.equals("check")) {
     check(character);
     System.out.println();
     playerTakeTurn(character);
@@ -59,7 +56,8 @@ public void playerTakeTurn(Character character) {
 //one of the choices for a turn, outputs detais
   public void check(Character character) {
     System.out.println("Your health is " + character.hp);
-    System.out.println("Your Items are " + character.inventory.forEach((indx) -> {System.out.println(indx.key);}));
+    System.out.println("\nYour Items are: \n");
+    character.inventory.forEach((indx) -> {System.out.println(indx.key);});
   }
   //one of the choices for a turn, allows attacking
   public void act(Character character) {
@@ -87,7 +85,7 @@ public void playerTakeTurn(Character character) {
   public static void use(Character character, Enemy enemy) {
     Scanner scanner = new Scanner(System.in);
     System.out.println("Select an item number to use");
-    System.out.println("\nYour Items are: \n" + character.inventory.forEach((indx) -> {System.out.println(indx.key);}));
+    System.out.println("\nYour Items are: \n");character.inventory.forEach((indx) -> {System.out.println(indx.key);});
     /*
     String select = scanner.nextLine();
     if (character.inventory.contains()) {
