@@ -87,7 +87,11 @@ public void playerTakeTurn(Character character) {
     Scanner scanner = new Scanner(System.in);
     System.out.println("Select an item number to use");
     System.out.println("\nYour Items are: ");
-    character.inventory.forEach(item -> {System.out.println(item.key);});
+    for(int index = 0; index < character.inventory.size(); index++) {
+      System.out.print(index + " ");
+      System.out.print(character.inventory.get(index).key);
+      System.out.print("\n");
+    }
     /*
     String select = scanner.nextLine();
 
