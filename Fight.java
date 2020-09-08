@@ -121,21 +121,8 @@ public void playerTakeTurn(Character character) throws InterruptedException {
          }
        }
        else if(set.charAt(0) == 'H') {
-         if(character.hp + set.charAt(1) > character.maxhp) {
-           char y_n = scanner.next().charAt(0);
-           do {
-            System.out.println("Are you sure you want to use a healing item at this high health? It will be " + (character.hp + set.charAt(1) - character.maxhp) + "hp less effective\t y/n?");
-            if(y_n == 'y') {
-              character.hp = character.maxhp;
-              break;
-              }
-            else if(y_n == 'n') {
-              break;
-           } 
-         } while(true);
-       }
-       else if(character.hp + set.charAt(1) <= character.maxhp)
-         System.out.println("You Healed for " + set.charAt(1) + " hp.\t Your total health is now " + character.hp);
+        heal(character, set);
+
 
     } else {
       System.out.println("Not valid item!");
@@ -143,6 +130,33 @@ public void playerTakeTurn(Character character) throws InterruptedException {
     }
 
   }
+}
+
+public static void heal(Character character, String set)  {
+    Scanner scan = new Scanner(System.in);
+    int num = Integer.parseInt(String.valueOf(set.charAt(1)));
+    int maxhp_set = character.maxhp - num;
+    if(character.hp > maxhp_set) {
+      do {
+        Main.clearScreen();
+        System.out.println("Are you sure you want to use a healing item at this high health? It will be " + ((character.hp + num) - character.maxhp) + "hp less effective\t y/n?");
+        char y_n = scan.next().charAt(0);
+        if(y_n == 'y') {
+          character.hp = character.maxhp;
+          Main.clearScreen();
+          System.out.println("You are now at max health!\t" + character.hp + "hp");
+          break;
+          }
+        else if(y_n == 'n') {
+          Main.clearScreen();
+          break;
+        } 
+    } while(true);
+    } else {
+      Main.clearScreen();
+      character.hp += num;
+      System.out.println("You Healed for " + set.charAt(1) + " hp.\t Your total health is now " + character.hp);
+    }
 }
 
   public class Enemy {

@@ -5,6 +5,6 @@ import ItemHandler.Item;
 
 public class Medkit extends Item {
     public Medkit() {
-        super("Medkit", "", false, DamageType.RANGED);
+        super("Medkit", "A small bag or case containing medical supplies.", true, null);
     }
 }
