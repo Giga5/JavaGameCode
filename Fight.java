@@ -108,10 +108,6 @@ public void playerTakeTurn(Character character) throws InterruptedException {
     if(select < character.inventory.size() && select > -1) {
        String set = character.inventory.get(select).useItem();
 
-        if(character.inventory.get(select).isConsumable) {
-          character.inventory.remove(select);
-        }
-
        if(set.charAt(0) == 'D') {
          Main.clearScreen();
          if (set.charAt(1) == '0') {
@@ -126,7 +122,12 @@ public void playerTakeTurn(Character character) throws InterruptedException {
          }
        }
        else if(set.charAt(0) == 'H') {
-        heal(character, set);
+        boolean remove = heal(character, set);
+        if(remove) {
+          if(character.inventory.get(select).isConsumable) {
+            character.inventory.remove(select);
+          }
+        }
 
 
     } else {
@@ -137,7 +138,7 @@ public void playerTakeTurn(Character character) throws InterruptedException {
   }
 }
 
-public static void heal(Character character, String set)  {
+public static boolean heal(Character character, String set)  {
     Scanner scan = new Scanner(System.in);
     int num = Integer.parseInt(String.valueOf(set.charAt(1)));
     int maxhp_set = character.maxhp - num;
@@ -150,17 +151,18 @@ public static void heal(Character character, String set)  {
           character.hp = character.maxhp;
           Main.clearScreen();
           System.out.println("You are now at max health!\t" + character.hp + "hp");
-          break;
+          return true;
           }
         else if(y_n == 'n') {
           Main.clearScreen();
-          break;
+          return false;
         } 
     } while(true);
     } else {
       Main.clearScreen();
       character.hp += num;
       System.out.println("You Healed for " + set.charAt(1) + " hp.\t Your total health is now " + character.hp);
+      return true;
     }
 }
 
@@ -171,3 +173,4 @@ public static void heal(Character character, String set)  {
     public String classType = "Guard";
   }
 }
+

@@ -7,7 +7,6 @@ class Main {
   public static void main(String[] args) throws InterruptedException {
     Scanner scan = new Scanner(System.in);
     Random rand = new Random();
-
     TitleScreen.runMenu();
     Character character = new Character();
     character.build();
