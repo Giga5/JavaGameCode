@@ -34,7 +34,7 @@ public class Item {
       if(this.type != null) {
           return "D" + r.nextInt(3);
       } else {
-          return "H2";
+        return "H" + r.nextInt(5);
       }
   }
 }

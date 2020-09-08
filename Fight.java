@@ -107,6 +107,11 @@ public void playerTakeTurn(Character character) throws InterruptedException {
     int select = scanner.nextInt();
     if(select < character.inventory.size() && select > -1) {
        String set = character.inventory.get(select).useItem();
+
+        if(character.inventory.get(select).isConsumable) {
+          character.inventory.remove(select);
+        }
+
        if(set.charAt(0) == 'D') {
          Main.clearScreen();
          if (set.charAt(1) == '0') {
