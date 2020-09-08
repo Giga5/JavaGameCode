@@ -43,7 +43,7 @@
       } while(true);
       Main.clearScreen();
       System.out.println("Welcome, " + selection.substring(0, 1).toUpperCase() + selection.substring(1) + " " + option);
-      Thread.sleep(4000);
+      Thread.sleep(3000);
       
   }
   
@@ -72,6 +72,7 @@
      energy = maxenergy;
      description = "Worked at an intergalactic ship yard for the majority of their life.";
      inventory.add(new Wrench());
+     inventory.add(new Medkit());
     }
 
     public static void buildMarine(String option) {

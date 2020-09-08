@@ -41,7 +41,7 @@ public class Fight {
   }
 
 //called for a player to take a turn
-public void playerTakeTurn(Character character) {
+public void playerTakeTurn(Character character) throws InterruptedException {
   System.out.println("Enter \'act\' to act, enter \'check\' to check your status");
   String enter = scan.nextLine();
   if (enter.equals("act")) {
@@ -60,7 +60,7 @@ public void playerTakeTurn(Character character) {
 }
 
 //one of the choices for a turn, outputs detais
-  public void check(Character character) {
+  public void check(Character character) throws InterruptedException {
     System.out.println("Your health is " + character.hp);
     System.out.println("\nYour Items are: \n");
     character.inventory.forEach((indx) -> {System.out.println(indx.key);});
@@ -69,7 +69,13 @@ public void playerTakeTurn(Character character) {
   public void act(Character character) {
       char choice = promptAct();
       if (choice == 'A' || choice == 'a') {
-        use(character, enemy);
+        try {
+          use(character, enemy);
+        }
+        catch(InterruptedException e) {
+          act(character);
+        }
+        
       } else if (choice == 'D' || choice == 'd') {
         System.out.println("disengage");
       } else {
@@ -88,7 +94,7 @@ public void playerTakeTurn(Character character) {
     return input;
     }
   
-  public static void use(Character character, Enemy enemy) {
+  public static void use(Character character, Enemy enemy) throws InterruptedException {
     Scanner scanner = new Scanner(System.in);
     Main.clearScreen();
     System.out.println("Select an item number to use");
@@ -102,19 +108,42 @@ public void playerTakeTurn(Character character) {
     if(select < character.inventory.size() && select > -1) {
        String set = character.inventory.get(select).useItem();
        if(set.charAt(0) == 'D') {
+         Main.clearScreen();
          if (set.charAt(1) == '0') {
            System.out.println("Your " + character.inventory.get(select).key + " attack missed!");
+           Thread.sleep(2000);
+           Main.clearScreen();
          } else {
            System.out.println("The " + enemy.classType + " has been hit for " + set.charAt(1) + " damage!");
            enemy.hp = enemy.hp - set.charAt(1);
+           Thread.sleep(2000);
+           Main.clearScreen();
          }
        }
+       else if(set.charAt(0) == 'H') {
+         if(character.hp + set.charAt(1) > character.maxhp) {
+           char y_n = scanner.next().charAt(0);
+           do {
+            System.out.println("Are you sure you want to use a healing item at this high health? It will be " + (character.hp + set.charAt(1) - character.maxhp) + "hp less effective\t y/n?");
+            if(y_n == 'y') {
+              character.hp = character.maxhp;
+              break;
+              }
+            else if(y_n == 'n') {
+              break;
+           } 
+         } while(true);
+       }
+       else if(character.hp + set.charAt(1) <= character.maxhp)
+         System.out.println("You Healed for " + set.charAt(1) + " hp.\t Your total health is now " + character.hp);
+
     } else {
       System.out.println("Not valid item!");
       use(character, enemy);
     }
 
   }
+}
 
   public class Enemy {
     public int damage = random.nextInt(5)+2;
