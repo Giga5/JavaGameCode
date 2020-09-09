@@ -15,6 +15,7 @@ class Main {
     fight.setup();
     while (true) {
       fight.playerTakeTurn(character);
+      fight.enemyTakeTurn(character);
       
     }
   }

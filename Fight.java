@@ -166,6 +166,13 @@ public static boolean heal(Character character, String set)  {
     }
 }
 
+    public void enemyTakeTurn(Character character) throws InterruptedException {
+    Main.clearScreen();
+    System.out.println("The " + enemy.classType + " hits you for " + enemy.damage + " damage!");
+    character.hp = character.hp- enemy.damage;
+    Thread.sleep(2000);
+    }
+
   public class Enemy {
     public int damage = random.nextInt(5)+2;
     public int maxhp = random.nextInt(10)+2;
